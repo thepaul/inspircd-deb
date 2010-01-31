@@ -9,3 +9,6 @@ conf/inspircd.quotes.example
 conf/inspircd.helpop.example
 conf/inspircd.filter.example
 conf/inspircd.rules.example
+conf/modules.conf.example
+conf/opers.conf.example
+conf/links.conf.example
