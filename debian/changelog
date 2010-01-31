@@ -1,3 +1,10 @@
+inspircd (1.2.2+paul-1) unstable; urgency=low
+
+  * New upstream release
+  * Local build with openssl
+
+ -- paul cannon <paul@thepaul.org>  Sat, 30 Jan 2010 17:21:12 -0700
+
 inspircd (1.1.22+dfsg-4) unstable; urgency=low
 
   [ Matt Arnold ]
