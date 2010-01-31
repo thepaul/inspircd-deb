@@ -28,7 +28,7 @@ build: build-stamp
 build-stamp: patch-stamp
 	dh_testdir
 	./configure --disable-interactive --disable-rpath=1 \
-		--enable-gnutls $(SOCKET_ENGINE) \
+		--enable-openssl $(SOCKET_ENGINE) \
 		--enable-ipv6 --prefix=/usr/lib/inspircd \
 		--config-dir=/etc/inspircd \
 		--module-dir=/usr/lib/inspircd/modules \
