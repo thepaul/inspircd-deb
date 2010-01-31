@@ -44,7 +44,7 @@ clean1:
 	rm -f build-stamp
 	# Making distclean should remove the symlink, but it doesn't, so we do
 	# it here
-	[ ! -f Makefile ] || $(MAKE) distclean
+	[ ! -f GNUMakefile ] || $(MAKE) distclean
 	rm -rf src/modules/m_ssl_gnutls.cpp
 	dh_clean
 	rm -f .force-root-ok
