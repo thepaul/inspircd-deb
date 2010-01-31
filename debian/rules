@@ -34,6 +34,8 @@ build-stamp: patch-stamp
 		--module-dir=/usr/lib/inspircd/modules \
 		--binary-dir=/usr/sbin \
 		--library-dir=/usr/lib/inspircd
+	# necessary to call this right away to catch the m_ssl_gnutls.so
+	./configure -modupdate
 	$(MAKE)
 	touch build-stamp
 
