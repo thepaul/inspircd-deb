@@ -1,4 +1,4 @@
-/var/log/inspircd.log {
+/var/log/ircd/inspircd.log {
         weekly
 	notifempty
         missingok
@@ -7,7 +7,7 @@
         compress
         delaycompress
         postrotate
-            [ -f '/var/run/inspircd.pid' ] && kill -HUP $(cat /var/run/inspircd.pid) || exit 0
+            [ -f '/var/run/inspircd/inspircd.pid' ] && kill -HUP $(cat /var/run/inspircd/inspircd.pid) || exit 0
         endscript
 }
 

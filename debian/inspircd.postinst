@@ -9,6 +9,9 @@ case "$1" in
 		chmod 770 /etc/inspircd
         mkdir -p /var/run/inspircd
         chown irc:irc /var/run/inspircd
+        mkdir -p /var/log/ircd
+        chown irc:irc /var/log/ircd
+        chmod 750 /var/log/ircd
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)
