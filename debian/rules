@@ -47,12 +47,14 @@ clean1:
 	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -rf src/modules/m_ssl_gnutls.cpp
 	dh_clean
+	rm -f .force-root-ok
 
 install: build-stamp
 	dh_testdir
 	dh_testroot
 	dh_prep
 	dh_installdirs
+	touch .force-root-ok
 	# Use 755 for correct permissions
 	$(MAKE) INSTMODE=755 install DESTDIR=$(CURDIR)/debian/inspircd
 	install -m 640 $(CURDIR)/debian/inspircd.default \
