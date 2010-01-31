@@ -1,0 +1,124 @@
+inspircd (1.1.22+dfsg-4) unstable; urgency=low
+
+  [ Matt Arnold ]
+  * 03_use_pkg-config_gnutls.dpatch fix gnutls ftbfs Closes: 529823.
+  * Add pkg-config to build-depends
+  * Bump standards version no change
+  * 04_gcc44_fixes.dpatch fix ftbfs on GCC 4.4 Closes: #505368
+    -- Patch thanks Martin Michlmayr
+
+  [ Bradley Smith ]
+  * Change section of inspircd-dbg to debug.
+  * Upgrade compat version to 7 and upgrade debhelper build-depends.
+  * Move dh_clean -k to dh_prep.
+
+ -- Bradley Smith <bradsmith@debian.org>  Mon, 22 Jun 2009 19:00:02 +0100
+
+inspircd (1.1.22+dfsg-3) unstable; urgency=low
+
+  * 02_fix_gnutls_config.dpatch - Fix configure script so GnuTLS module is
+    built. Closes: #510748.
+
+ -- Bradley Smith <bradsmith@debian.org>  Sun, 04 Jan 2009 19:00:13 +0000
+
+inspircd (1.1.22+dfsg-2) unstable; urgency=low
+
+  * 01_fix_config_reload.dpatch - Fix crash on config reload.
+
+ -- Bradley Smith <bradsmith@debian.org>  Mon, 15 Dec 2008 20:23:01 +0000
+
+inspircd (1.1.22+dfsg-1) unstable; urgency=low
+
+  [ Matt Arnold ]
+  * New upstream release.
+  * Remove nenolod from Uploaders as requested.
+  * Merge with upstream discontinue our patch series 02, 03.
+  * Upstream change to staticlly linked core. Closes: #506862.
+
+  [ Bradley Smith ]
+  * Add myself to uploaders.
+  * Misc whitespace fixes.
+
+ -- Bradley Smith <bradsmith@debian.org>  Wed, 03 Dec 2008 17:05:27 +0000
+
+inspircd (1.1.21+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+    - Upstream reported buffer overrun
+
+ -- Matt Arnold <mattarnold5@gmail.com>  Sat, 13 Sep 2008 14:11:16 -0400
+
+inspircd (1.1.20+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+  * add debian/README.source and 'source' target in debian/rules
+  * changed debian policy to 3.8.0
+
+ -- Giacomo Catenazzi <cate@debian.org>  Thu, 03 Jul 2008 09:02:48 +0200
+
+inspircd (1.1.19+dfsg-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Darren Blaber <dmbtech@gmail.com>  Mon, 21 Apr 2008 12:51:01 -0500
+
+inspircd (1.1.18+dfsg-1) unstable; urgency=medium
+
+  * New stable upstream version, solve CVE-2008-1925
+
+ -- Giacomo Catenazzi <cate@debian.org>  Tue, 01 Apr 2008 08:57:37 +0200
+
+inspircd (1.1.17+dfsg-2) unstable; urgency=low
+
+  [ Giacomo Catenazzi ]
+  * init.d script: cleanup (remove bashism, add cron target, remove sleep,
+    remove unused exit)
+  * add debian/inspircd.logrotate, and remore logs on purge
+
+ -- Giacomo Catenazzi <cate@debian.org>  Fri, 28 Mar 2008 08:02:56 +0100
+
+inspircd (1.1.17+dfsg-1) unstable; urgency=low
+
+  [ Darren Blaber ]
+  * New upstream release, fix /etc/init.d/inspircd stop.
+  * Fix the postrm script so there is no duplicate update-rc.d
+  * Fix the manpage so there are no more errors in it
+
+  [ Matt Arnold ]
+  *  Fix prerm so it works (Closes: #466924)
+
+  [ Giacomo Catenazzi ]
+  * Added me as uploader
+  * Add again support of dpatch in debian/rules
+  * Build sources only once!
+  * Correct make clean target, not to include generated ./inspircd on sources
+  * Don't change permission of configuration files, when starting inspircd
+    (separation of policy and program).
+
+ -- Giacomo Catenazzi <cate@debian.org>  Thu, 06 Mar 2008 07:56:47 +0100
+
+inspircd (1.1.16+dfsg-1) unstable; urgency=low
+
+  [ William Pitcock ]
+  * New upstream release.
+    - Upstream has new --disable-rpath feature, dropped patch series.
+    - debian/rules: use --disable-rpath
+
+  [ Matt Arnold ]
+  * Add prerm script to stop ircd before removal
+
+ -- Matt Arnold <mattarnold5@gmail.com>  Thu, 17 Jan 2008 11:21:17 -0500
+
+inspircd (1.1.15+dfsg-1) unstable; urgency=low
+
+  [ Mario Iseli ]
+  * Initial release (Closes: #429317)
+
+  [ William Pitcock ]
+  * Prepare for uploading to unstable since Mario is on
+    vacation until 2008.
+
+  [ Darren Blaber ]
+  * Repackaged upstream tarball without non-free components (rfcs were removed)
+
+ -- Darren Blaber <dmbtech@gmail.com>  Thu, 20 Dec 2007 00:11:48 -0500

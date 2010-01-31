@@ -1,0 +1,13 @@
+/var/log/inspircd.log {
+        weekly
+	notifempty
+        missingok
+        create 0640 irc adm
+        rotate 12
+        compress
+        delaycompress
+        postrotate
+            [ -f '/var/run/inspircd.pid' ] && kill -HUP $(cat /var/run/inspircd.pid) || exit 0
+        endscript
+}
+

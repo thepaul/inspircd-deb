@@ -1,0 +1,58 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH INSPIRCD 1 "June 11, 2007"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+inspircd \- A modular C++ IRC Daemon
+.SH SYNOPSIS
+.B inspircd
+[\-\-nofork]  [\-\-nolog]  [\-\-debug]  [\-\-logfile <filename>]  [\-\-runasroot]  [\-\-version]  [\-\-config <config>]
+.br
+.SH DESCRIPTION
+This manual page documents briefly the
+.B inspircd 
+command.
+
+.PP
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
+.\" respectively.
+\fBinspircd\fP is a modular C++ IRC Daemon (ircd) for Linux, BSD and Windows systems created to provide a stable, modern, lightweight irc server from scratch and provide a vast number of features in a modularised form using an advanced module API. By keeping the functionality of the main core to a minimum we hope to increase the stability and speed of our project and make it customisable to the needs of many users. InspIRCd is designed primarily to be a custom irc server for the chatspike irc network (irc.chatspike.net) but we are releasing it into the public domain under GPL so that you may benefit yourself from our work. The project is written from scratch, avoiding the inherent instability under large loads which can be seen in many other irc server distributions which have the same featureset.
+.PP
+The \fBinspircd\fP command starts the ircd server, using /etc/inspircd.conf as its configuration file unless used with \fB\-\-config\fP.  
+
+.SH OPTIONS
+These programs follow the usual GNU command line syntax, with long
+options starting with two dashes (`-').
+A summary of options is included below.
+For the complete documentation for inspircd, please see http://inspircd.org/wiki/Main_Page.
+.TP
+.B \-h, \-\-help
+Show summary of options.
+.TP
+.B \-v, \-\-version
+Show version of program.
+.TP
+.B \-c, \-\-config <config>
+Specify the config file
+
+.SH SEE ALSO
+InspIRCd is fully documented by the inspircd documentation team, which is viewable at http://inspircd.org/wiki/.
+.SH AUTHOR
+InspIRCd was written by Craig Edwards (Brain), Craig McLure (FrostyCoolSlug), Robin Burchell (w00t), and more (see  http://www.inspircd.org/wiki/Credits).
+.PP
+This manual page was written by Darren Blaber <dmbtech@gmail.com>,
+for the Debian project (but may be used by others).

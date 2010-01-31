@@ -1,0 +1,24 @@
+inspircd for Debian
+-------------------
+Configuration:
+You will likely want to edit the configuration file, as many default settings will not be
+suitable for a production network.
+
+Please read http://inspircd.org/wiki/Configuration for an outline and overview of various 
+configuration options.
+
+SSL:
+If you would like to use ssl with inspircd, please read 
+http://www.inspircd.org/wiki/GnuTLS_SSL_Module.
+
+Install gnutls-bin for the utilities required to generate the certificate.
+You may also be interested in using CACert instead of a self-signed certificate, in which 
+case, follow the instructions at the Wiki.
+
+More information:
+For the complete documentation of inspircd, please goto the inspircd wiki, 
+http://inspircd.org/wiki/.
+
+ -- Darren Blaber <dmbtech@gmail.com>  Fri, 15 Jun 2007 20:05:39 -0400
+
+ -- William Pitcock <nenolod@sacredspiral.co.uk>  Tue, 18 Dec 2007 15:40:21 -0600

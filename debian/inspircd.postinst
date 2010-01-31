@@ -1,0 +1,24 @@
+#! /bin/sh
+
+set -e
+
+case "$1" in
+
+	configure)
+		chown -R irc:irc /etc/inspircd
+		chmod 770 /etc/inspircd
+	;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+	;;
+
+	*)
+		echo "ERROR: Postinst called with unknown argument!"
+		exit 0
+	;;
+
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,71 @@
+#!/bin/sh -e
+## 01_fix_config_reload.dpatch
+##
+## DP: Fix crash on config reload
+## DP: Cherry picked from upstream.
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch}"
+
+case "$1" in
+       -patch) patch $patch_opts -p1 < $0;;
+       -unpatch) patch $patch_opts -p1 -R < $0;;
+        *)
+                echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+                exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff --git a/src/command_parse.cpp b/src/command_parse.cpp
+index 1ca24fc..2ee7daa 100644
+--- a/src/command_parse.cpp
++++ b/src/command_parse.cpp
+@@ -552,14 +552,6 @@ const char* CommandParser::LoadCommand(const char* name)
+ 
+ void CommandParser::SetupCommandTable(userrec* user)
+ {
+-	for (SharedObjectList::iterator command = RFCCommands.begin(); command != RFCCommands.end(); command++)
+-	{
+-		command_t *cmdptr = cmdlist.find(command->first)->second;
+-		cmdlist.erase(cmdlist.find(command->first));
+-		RFCCommands.erase(command);
+-		delete cmdptr;
+-	}
+-
+ 	if (!user)
+ 	{
+ 		printf("\nLoading core commands");
+diff --git a/src/configreader.cpp b/src/configreader.cpp
+index 4eac5a6..65b33f3 100644
+--- a/src/configreader.cpp
++++ b/src/configreader.cpp
+@@ -935,9 +935,6 @@ void ServerConfig::Read(bool bail, userrec* user)
+ 		ServerInstance->Log(DEFAULT,"Successfully unloaded %lu of %lu modules and loaded %lu of %lu modules.",(unsigned long)rem,(unsigned long)removed_modules.size(),(unsigned long)add,(unsigned long)added_modules.size());
+ 	}
+ 
+-	/** Note: This is safe, the method checks for user == NULL */
+-	ServerInstance->Parser->SetupCommandTable(user);
+-
+ 	if (user)
+ 		user->WriteServ("NOTICE %s :*** Successfully rehashed server.", user->nick);
+ 	else
+diff --git a/src/inspircd.cpp b/src/inspircd.cpp
+index 344d0af..df211df 100644
+--- a/src/inspircd.cpp
++++ b/src/inspircd.cpp
+@@ -585,6 +585,8 @@ InspIRCd::InspIRCd(int argc, char** argv)
+ 	Config->ClearStack();
+ 	Config->Read(true, NULL);
+ 
++	this->Parser->SetupCommandTable(NULL);
++
+ 	if (!do_root)
+ 		this->CheckRoot();
+ 	else

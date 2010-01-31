@@ -1,0 +1,95 @@
+This package was debianized by Darren Blaber <dmbtech@gmail.com> on
+Fri, 15 Jun 2007 20:05:39 -0400.
+
+It was downloaded from <http://www.inspircd.org/>.
+
+Upstream Authors: Craig Edwards (Brain) <brain@inspircd.org>,
+   Craig McLure (FrostyCoolSlug) <craig@inspircd.org>,
+   Robin Burchell (w00t) <w00t@inspircd.org>.
+
+(There are lesser contributors, see <http://www.inspircd.org/wiki/Credits>.)
+
+All files except those mentioned below are copyright:
+
+   Copyright (c) 2002-2007 InspIRCd Development Team (see Upstream Authors)
+
+License:
+
+   This package is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; under version 2 of the License. 
+
+   This package is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this package; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+   On Debian systems, the complete text of the GNU General
+   Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+The following files are licensed under a different license and belong to
+different copyright holders:
+
+   "src/inspstring.cpp":
+     Copyright: Copyright (c) 1998 Todd C. Miller <Todd.Miller@courtesan.com>
+     License: Three-clause BSD license
+       Redistribution and use in source and binary forms, with or without
+       modification, are permitted provided that the following conditions
+       are met:
+
+       1. Redistributions of source code must retain the above copyright
+          notice, this list of conditions and the following disclaimer.
+       2. Redistributions in binary form must reproduce the above copyright
+          notice, this list of conditions and the following disclaimer in the
+          documentation and/or other materials provided with the distribution.
+       3. The name of the author may not be used to endorse or promote products
+          derived from this software without specific prior written permission.
+ 
+       THIS SOFTWARE IS PROVIDED `AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+       INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+       AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
+       THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+       EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+       PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+       OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+       WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+       OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+       ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+   "src/modules/m_sha256.cpp":
+     Copyright: Copyright (C) 2005 Olivier Gay <olivier.gay@a3.epfl.ch>
+     License: Three-clause BSD license
+       Redistribution and use in source and binary forms, with or without
+       modification, are permitted provided that the following conditions
+       are met:
+
+       1. Redistributions of source code must retain the above copyright
+          notice, this list of conditions and the following disclaimer.
+       2. Redistributions in binary form must reproduce the above copyright
+          notice, this list of conditions and the following disclaimer in the
+          documentation and/or other materials provided with the distribution.
+       3. The name of the author may not be used to endorse or promote products
+          derived from this software without specific prior written permission.
+ 
+       THIS SOFTWARE IS PROVIDED `AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+       INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+       AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
+       THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+       EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+       PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+       OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+       WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+       OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+       ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+These files have been removed because they're not available with/under a free license:
+rfc1035.txt
+rfc1413.txt
+rfc1459.txt
+
+The Debian packaging is (C) 2007, Darren Blaber <dmbtech@gmail.com> and
+is licensed under the GPL, see above.

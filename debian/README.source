@@ -1,0 +1,25 @@
+README.source for inspircd
+===========================
+
+This package uses dpatch to manage patches, use
+fakeroot debian/rules patch
+to get a patched sourcetree after dpkg-source -x and use dpatch-edit-patch to
+generate new patches.
+
+
+Building from SVN:
+-----------------
+#1 Fetch the source tarball from upstream and extract it.
+  i.e. using 'uscan' and 'tar'
+#2 Change into the generated directory and pull the debian specific files from
+SVN:
+svn export svn://svn.debian.org/pkg-irc/packages/inspircd/trunk/debian debian
+#3 Run
+fakeroot debian/rules source
+to generate a new tarball containing only dfsg free content.
+#4 Build
+dpkg-buildpackage -uc -us -rfakeroot
+
+----
+Note: this documentation is copied from iceape package
+

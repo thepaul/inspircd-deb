@@ -1,0 +1,11 @@
+conf/inspircd.motd.example
+conf/inspircd.helpop-full.example
+conf/inspircd.censor.example
+conf/aliases
+conf/aliases/ircservices.conf.example
+conf/aliases/anope.conf.example
+conf/aliases/atheme.conf.example
+conf/inspircd.quotes.example
+conf/inspircd.helpop.example
+conf/inspircd.filter.example
+conf/inspircd.rules.example

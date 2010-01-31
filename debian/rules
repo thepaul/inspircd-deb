@@ -1,0 +1,96 @@
+#!/usr/bin/make -f
+# $Id: rules 240 2009-06-22 18:01:02Z bradsmith $
+
+export DH_VERBOSE=1
+
+include /usr/share/dpatch/dpatch.make
+
+CFLAGS = -Wall -g
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+CFLAGS += -O0
+else
+CFLAGS += -O2
+endif
+
+DEB_HOST_ARCH_OS := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS 2>/dev/null)
+
+ifeq ($(DEB_HOST_ARCH_OS), linux)
+    SOCKET_ENGINE=--enable-epoll
+else ifeq ($(DEB_HOST_ARCH_OS), kfreebsd)
+    SOCKET_ENGINE=--enable-kqueue
+else ifeq ($(DEB_HOST_ARCH_OS), solaris)
+    SOCKET_ENGINE=--enable-ports
+else
+    SOCKET_ENGINE=--enable-poll
+endif
+
+build: build-stamp
+build-stamp: patch-stamp
+	dh_testdir
+	./configure --disable-interactive --disable-rpath=1 \
+		--enable-gnutls $(SOCKET_ENGINE) \
+		--enable-ipv6 --prefix=/usr/lib/inspircd \
+		--config-dir=/etc/inspircd \
+		--module-dir=/usr/lib/inspircd/modules \
+		--binary-dir=/usr/sbin \
+		--library-dir=/usr/lib/inspircd
+	$(MAKE)
+	touch build-stamp
+
+clean: clean1 unpatch
+clean1:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+	# Making distclean should remove the symlink, but it doesn't, so we do
+	# it here
+	[ ! -f Makefile ] || $(MAKE) distclean
+	rm -rf src/modules/m_ssl_gnutls.cpp
+	dh_clean
+
+install: build-stamp
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	# Use 755 for correct permissions
+	$(MAKE) INSTMODE=755 install DESTDIR=$(CURDIR)/debian/inspircd
+	install -m 640 $(CURDIR)/debian/inspircd.default \
+		$(CURDIR)/debian/inspircd/etc/default/inspircd
+	rm -f $(CURDIR)/debian/inspircd/etc/inspircd/*
+	install -o irc -m 640 $(CURDIR)/debian/inspircd.conf \
+		$(CURDIR)/debian/inspircd/etc/inspircd/inspircd.conf
+	install -o irc -m 644 $(CURDIR)/debian/inspircd.motd \
+		$(CURDIR)/debian/inspircd/etc/inspircd/motd
+	install -o irc -m 644 $(CURDIR)/debian/inspircd.rules \
+		$(CURDIR)/debian/inspircd/etc/inspircd/rules
+
+binary-indep: build install
+
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs
+	dh_installchangelogs
+	dh_installexamples
+	dh_installinit
+	dh_installman debian/inspircd.1
+	dh_installlogrotate
+	dh_link
+	dh_strip --dbg-package=inspircd-dbg
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps -l/usr/lib/inspircd
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+
+source: clean
+	rm -fr $(CURDIR)/docs/rfc/
+	tar -C .. -zcf ../`dpkg-parsechangelog | sed -n '/Source:/ N; s/Source: \(.*\)\nVersion: \(.*:\|\)\(.*\)-[0-9][0-9]*$$/\1_\3/ p'`.orig.tar.gz --exclude=`basename $(CURDIR)`/debian `basename $(CURDIR)`
+
+.PHONY: binary clean binary-indep binary-arch build install patch unpatch \
+        clean1 source

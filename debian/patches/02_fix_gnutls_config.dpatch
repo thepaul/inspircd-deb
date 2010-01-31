@@ -1,0 +1,41 @@
+#!/bin/sh -e
+## 02_fix_gnutls_config.dpatch
+##
+## DP: Fix configure script to make sure GnuTLS module is built.
+## DP: Cherry picked from upstream.
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch}"
+
+case "$1" in
+       -patch) patch $patch_opts -p1 < $0;;
+       -unpatch) patch $patch_opts -p1 -R < $0;;
+        *)
+                echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+                exit 1;;
+esac
+
+exit 0
+
+@DPATCH@
+diff -Naur a/configure b/configure
+--- a/configure	2009-01-04 19:08:57.000000000 +0000
++++ b/configure	2009-01-04 19:10:15.000000000 +0000
+@@ -139,10 +139,10 @@
+ chomp($config{HAS_OPENSSL}  = `pkg-config --modversion openssl 2>/dev/null`);		# Openssl version
+ chomp($gnutls_ver = $config{HAS_GNUTLS});
+ chomp($openssl_ver = $config{HAS_OPENSSL});
+-$config{HAS_GNUTLS}	    = "n";
++$config{USE_GNUTLS}	    = "n";
+ if (defined $opt_use_gnutls)
+ {
+-	$config{HAS_GNUTLS} = "y";					# Use gnutls.
++	$config{USE_GNUTLS} = "y";					# Use gnutls.
+ }
+ $config{USE_OPENSSL}	= "n";						# Use openssl.
+ if (defined $opt_use_openssl)

@@ -1,0 +1,370 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 05_gcc44_fixes.dpatch by Matt Arnold <mattarnold5@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad inspircd-1.1.22+dfsg~/src/channels.cpp inspircd-1.1.22+dfsg/src/channels.cpp
+--- inspircd-1.1.22+dfsg~/src/channels.cpp	2008-03-29 11:02:06.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/channels.cpp	2009-06-21 17:39:01.000000000 -0400
+@@ -18,6 +18,7 @@
+ #include "modules.h"
+ #include "wildcard.h"
+ #include "mode.h"
++#include <cstdio>
+ 
+ chanrec::chanrec(InspIRCd* Instance) : ServerInstance(Instance)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/cmd_kill.cpp inspircd-1.1.22+dfsg/src/cmd_kill.cpp
+--- inspircd-1.1.22+dfsg~/src/cmd_kill.cpp	2008-02-11 17:09:24.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/cmd_kill.cpp	2009-06-21 17:39:48.000000000 -0400
+@@ -17,6 +17,7 @@
+ #include "modules.h"
+ #include "wildcard.h"
+ #include "commands/cmd_kill.h"
++#include <cstdio>
+ 
+ extern "C" DllExport command_t* init_command(InspIRCd* Instance)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/cmd_oper.cpp inspircd-1.1.22+dfsg/src/cmd_oper.cpp
+--- inspircd-1.1.22+dfsg~/src/cmd_oper.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/cmd_oper.cpp	2009-06-21 17:39:59.000000000 -0400
+@@ -19,6 +19,7 @@
+ #include "wildcard.h"
+ #include "commands/cmd_oper.h"
+ #include "hashcomp.h"
++#include <cstdio>
+ 
+ bool OneOfMatches(const char* host, const char* ip, const char* hostlist)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/cmd_stats.cpp inspircd-1.1.22+dfsg/src/cmd_stats.cpp
+--- inspircd-1.1.22+dfsg~/src/cmd_stats.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/cmd_stats.cpp	2009-06-21 17:40:16.000000000 -0400
+@@ -27,6 +27,7 @@
+ #include "xline.h"
+ #include "commands/cmd_stats.h"
+ #include "commands/cmd_whowas.h"
++#include <cstdio>
+ 
+ 
+ extern "C" DllExport command_t* init_command(InspIRCd* Instance)
+diff -urNad inspircd-1.1.22+dfsg~/src/cmd_time.cpp inspircd-1.1.22+dfsg/src/cmd_time.cpp
+--- inspircd-1.1.22+dfsg~/src/cmd_time.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/cmd_time.cpp	2009-06-21 17:40:26.000000000 -0400
+@@ -15,6 +15,7 @@
+ #include "configreader.h"
+ #include "users.h"
+ #include "commands/cmd_time.h"
++#include <cstdio>
+ 
+ 
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/command_parse.cpp inspircd-1.1.22+dfsg/src/command_parse.cpp
+--- inspircd-1.1.22+dfsg~/src/command_parse.cpp	2008-11-02 00:18:52.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/command_parse.cpp	2009-06-21 17:40:59.000000000 -0400
+@@ -22,6 +22,7 @@
+ #include "socket.h"
+ #include "command_parse.h"
+ #include "exitcodes.h"
++#include <cstdio>
+ 
+ /* Directory Searching for Unix-Only */
+ #ifndef WIN32
+diff -urNad inspircd-1.1.22+dfsg~/src/dns.cpp inspircd-1.1.22+dfsg/src/dns.cpp
+--- inspircd-1.1.22+dfsg~/src/dns.cpp	2008-03-15 14:02:21.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/dns.cpp	2009-06-21 17:39:36.000000000 -0400
+@@ -37,6 +37,7 @@
+ #include "socketengine.h"
+ #include "configreader.h"
+ #include "socket.h"
++#include <cstdio>
+ 
+ using irc::sockets::insp_inaddr;
+ using irc::sockets::insp_ntoa;
+diff -urNad inspircd-1.1.22+dfsg~/src/helperfuncs.cpp inspircd-1.1.22+dfsg/src/helperfuncs.cpp
+--- inspircd-1.1.22+dfsg~/src/helperfuncs.cpp	2008-06-27 09:19:11.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/helperfuncs.cpp	2009-06-21 17:40:46.000000000 -0400
+@@ -20,6 +20,7 @@
+ #include "mode.h"
+ #include "xline.h"
+ #include "exitcodes.h"
++#include <cstdio>
+ 
+ static char TIMESTR[26];
+ static time_t LAST = 0;
+diff -urNad inspircd-1.1.22+dfsg~/src/mode.cpp inspircd-1.1.22+dfsg/src/mode.cpp
+--- inspircd-1.1.22+dfsg~/src/mode.cpp	2008-04-21 14:12:50.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/mode.cpp	2009-06-21 17:39:10.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "modules.h"
+ #include "inspstring.h"
+ #include "mode.h"
++#include <cstdio>
+ 
+ /* +s (secret) */
+ #include "modes/cmode_s.h"
+diff -urNad inspircd-1.1.22+dfsg~/src/modes/cmode_b.cpp inspircd-1.1.22+dfsg/src/modes/cmode_b.cpp
+--- inspircd-1.1.22+dfsg~/src/modes/cmode_b.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modes/cmode_b.cpp	2009-06-21 17:38:11.000000000 -0400
+@@ -24,6 +24,7 @@
+ #include "inspstring.h"
+ #include "hashcomp.h"
+ #include "modes/cmode_b.h"
++#include <cstdio>
+ 
+ ModeChannelBan::ModeChannelBan(InspIRCd* Instance) : ModeHandler(Instance, 'b', 1, 1, true, MODETYPE_CHANNEL, false)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/modes/cmode_h.cpp inspircd-1.1.22+dfsg/src/modes/cmode_h.cpp
+--- inspircd-1.1.22+dfsg~/src/modes/cmode_h.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modes/cmode_h.cpp	2009-06-21 17:37:58.000000000 -0400
+@@ -18,6 +18,7 @@
+ #include "users.h"
+ #include "modules.h"
+ #include "modes/cmode_h.h"
++#include <cstdio>
+ 
+ ModeChannelHalfOp::ModeChannelHalfOp(InspIRCd* Instance) : ModeHandler(Instance, 'h', 1, 1, true, MODETYPE_CHANNEL, false, '%')
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/modes/cmode_k.cpp inspircd-1.1.22+dfsg/src/modes/cmode_k.cpp
+--- inspircd-1.1.22+dfsg~/src/modes/cmode_k.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modes/cmode_k.cpp	2009-06-21 17:37:25.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "channels.h"
+ #include "users.h"
+ #include "modes/cmode_k.h"
++#include <cstdio>
+ 
+ ModeChannelKey::ModeChannelKey(InspIRCd* Instance) : ModeHandler(Instance, 'k', 1, 1, false, MODETYPE_CHANNEL, false)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/modes/cmode_o.cpp inspircd-1.1.22+dfsg/src/modes/cmode_o.cpp
+--- inspircd-1.1.22+dfsg~/src/modes/cmode_o.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modes/cmode_o.cpp	2009-06-21 17:37:15.000000000 -0400
+@@ -18,6 +18,7 @@
+ #include "users.h"
+ #include "modules.h"
+ #include "modes/cmode_o.h"
++#include <cstdio>
+ 
+ ModeChannelOp::ModeChannelOp(InspIRCd* Instance) : ModeHandler(Instance, 'o', 1, 1, true, MODETYPE_CHANNEL, false, '@')
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/modes/cmode_v.cpp inspircd-1.1.22+dfsg/src/modes/cmode_v.cpp
+--- inspircd-1.1.22+dfsg~/src/modes/cmode_v.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modes/cmode_v.cpp	2009-06-21 17:36:58.000000000 -0400
+@@ -18,6 +18,7 @@
+ #include "users.h"
+ #include "modules.h"
+ #include "modes/cmode_v.h"
++#include <cstdio>
+ 
+ ModeChannelVoice::ModeChannelVoice(InspIRCd* Instance) : ModeHandler(Instance, 'v', 1, 1, true, MODETYPE_CHANNEL, false, '+')
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_cgiirc.cpp inspircd-1.1.22+dfsg/src/modules/m_cgiirc.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_cgiirc.cpp	2008-11-02 00:20:54.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/modules/m_cgiirc.cpp	2009-06-21 17:33:53.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "modules.h"
+ #include "xline.h"
+ #include "dns.h"
++#include <cstdio>
+ #ifndef WINDOWS
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_check.cpp inspircd-1.1.22+dfsg/src/modules/m_check.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_check.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modules/m_check.cpp	2009-06-21 17:34:07.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "channels.h"
+ #include "modules.h"
+ #include "wildcard.h"
++#include <cstdio>
+ 
+ /* $ModDesc: Provides the /check command to retrieve information on a user, channel, or IP address */
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_customtitle.cpp inspircd-1.1.22+dfsg/src/modules/m_customtitle.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_customtitle.cpp	2008-08-10 12:49:18.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/modules/m_customtitle.cpp	2009-06-21 17:34:21.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "channels.h"
+ #include "modules.h"
+ #include "wildcard.h"
++#include <cstdio>
+ 
+ /* $ModDesc: Provides the TITLE command which allows setting of CUSTOM WHOIS TITLE line */
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_dnsbl.cpp inspircd-1.1.22+dfsg/src/modules/m_dnsbl.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_dnsbl.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modules/m_dnsbl.cpp	2009-06-21 17:35:29.000000000 -0400
+@@ -17,6 +17,7 @@
+ #include "users.h"
+ #include "channels.h"
+ #include "modules.h"
++#include <cstdio>
+ 
+ #ifndef WINDOWS
+ #include <sys/types.h>
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_ident.cpp inspircd-1.1.22+dfsg/src/modules/m_ident.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_ident.cpp	2008-08-27 15:00:21.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/modules/m_ident.cpp	2009-06-21 17:35:41.000000000 -0400
+@@ -15,6 +15,7 @@
+ #include "users.h"
+ #include "channels.h"
+ #include "modules.h"
++#include <cstdio>
+ 
+ using irc::sockets::NonBlocking;
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_invisible.cpp inspircd-1.1.22+dfsg/src/modules/m_invisible.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_invisible.cpp	2008-11-24 03:58:07.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modules/m_invisible.cpp	2009-06-21 17:35:52.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "channels.h"
+ #include "modules.h"
+ #include <stdarg.h>
++#include <cstdio>
+ 
+ /* $ModDesc: Allows for opered clients to join channels without being seen, similar to unreal 3.1 +I mode */
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_messageflood.cpp inspircd-1.1.22+dfsg/src/modules/m_messageflood.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_messageflood.cpp	2008-04-06 08:05:34.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/modules/m_messageflood.cpp	2009-06-21 17:36:04.000000000 -0400
+@@ -15,6 +15,7 @@
+ #include "users.h"
+ #include "channels.h"
+ #include "modules.h"
++#include <cstdio>
+ 
+ /* $ModDesc: Provides channel mode +f (message flood protection) */
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_namesx.cpp inspircd-1.1.22+dfsg/src/modules/m_namesx.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_namesx.cpp	2008-04-03 18:34:40.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/modules/m_namesx.cpp	2009-06-21 17:36:14.000000000 -0400
+@@ -15,6 +15,7 @@
+ #include "users.h"
+ #include "channels.h"
+ #include "modules.h"
++#include <cstdio>
+ 
+ static const char* dummy = "ON";
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_safelist.cpp inspircd-1.1.22+dfsg/src/modules/m_safelist.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_safelist.cpp	2008-05-28 06:18:28.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/modules/m_safelist.cpp	2009-06-21 17:36:23.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "channels.h"
+ #include "modules.h"
+ #include "wildcard.h"
++#include <cstdio>
+ 
+ /** Holds a users m_safelist state
+  */
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_spanningtree/main.cpp inspircd-1.1.22+dfsg/src/modules/m_spanningtree/main.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_spanningtree/main.cpp	2008-09-11 12:33:56.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/modules/m_spanningtree/main.cpp	2009-06-21 17:33:14.000000000 -0400
+@@ -24,6 +24,7 @@
+ #include "wildcard.h"
+ #include "xline.h"
+ #include "transport.h"
++#include <cstdio>
+ 
+ #include "m_spanningtree/timesynctimer.h"
+ #include "m_spanningtree/resolvers.h"
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_spanningtree/treesocket1.cpp inspircd-1.1.22+dfsg/src/modules/m_spanningtree/treesocket1.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_spanningtree/treesocket1.cpp	2008-08-05 15:08:59.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/modules/m_spanningtree/treesocket1.cpp	2009-06-21 17:33:28.000000000 -0400
+@@ -24,6 +24,7 @@
+ #include "transport.h"
+ #include "m_hash.h"
+ #include "socketengine.h"
++#include <cstdio>
+ 
+ #include "m_spanningtree/main.h"
+ #include "m_spanningtree/utils.h"
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_spanningtree/treesocket2.cpp inspircd-1.1.22+dfsg/src/modules/m_spanningtree/treesocket2.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_spanningtree/treesocket2.cpp	2008-11-27 18:22:59.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modules/m_spanningtree/treesocket2.cpp	2009-06-21 17:33:41.000000000 -0400
+@@ -23,6 +23,7 @@
+ #include "xline.h"
+ #include "transport.h"
+ #include "socketengine.h"
++#include <cstdio>
+ 
+ #include "m_spanningtree/main.h"
+ #include "m_spanningtree/utils.h"
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_spy.cpp inspircd-1.1.22+dfsg/src/modules/m_spy.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_spy.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modules/m_spy.cpp	2009-06-21 17:36:36.000000000 -0400
+@@ -23,6 +23,7 @@
+ #include "channels.h"
+ #include "modules.h"
+ #include "wildcard.h"
++#include <cstdio>
+ 
+ void spy_userlist(userrec *user, chanrec *c)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/modules/m_tline.cpp inspircd-1.1.22+dfsg/src/modules/m_tline.cpp
+--- inspircd-1.1.22+dfsg~/src/modules/m_tline.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/modules/m_tline.cpp	2009-06-21 17:36:47.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "channels.h"
+ #include "modules.h"
+ #include "wildcard.h"
++#include <cstdio>
+ 
+ /* $ModDesc: Provides /tline command used to test who a mask matches */
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/snomasks.cpp inspircd-1.1.22+dfsg/src/snomasks.cpp
+--- inspircd-1.1.22+dfsg~/src/snomasks.cpp	2008-01-10 08:45:53.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/snomasks.cpp	2009-06-21 17:41:10.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "configreader.h"
+ #include "users.h"
+ #include "snomasks.h"
++#include <cstdio>
+ 
+ SnomaskManager::SnomaskManager(InspIRCd* Instance) : ServerInstance(Instance)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/socketengine_epoll.cpp inspircd-1.1.22+dfsg/src/socketengine_epoll.cpp
+--- inspircd-1.1.22+dfsg~/src/socketengine_epoll.cpp	2008-08-23 19:22:53.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/socketengine_epoll.cpp	2009-06-21 17:38:50.000000000 -0400
+@@ -15,6 +15,7 @@
+ #include "exitcodes.h"
+ #include <sys/epoll.h>
+ #include "socketengine_epoll.h"
++#include <cstdio>
+ 
+ EPollEngine::EPollEngine(InspIRCd* Instance) : SocketEngine(Instance)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/userprocess.cpp inspircd-1.1.22+dfsg/src/userprocess.cpp
+--- inspircd-1.1.22+dfsg~/src/userprocess.cpp	2008-02-11 17:09:24.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/userprocess.cpp	2009-06-21 17:38:23.000000000 -0400
+@@ -19,6 +19,7 @@
+ #include "xline.h"
+ #include "socketengine.h"
+ #include "command_parse.h"
++#include <cstdio>
+ 
+ void InspIRCd::FloodQuitUser(userrec* current)
+ {
+diff -urNad inspircd-1.1.22+dfsg~/src/users.cpp inspircd-1.1.22+dfsg/src/users.cpp
+--- inspircd-1.1.22+dfsg~/src/users.cpp	2008-10-28 19:47:33.000000000 -0400
++++ inspircd-1.1.22+dfsg/src/users.cpp	2009-06-21 17:40:35.000000000 -0400
+@@ -20,6 +20,7 @@
+ #include "wildcard.h"
+ #include "xline.h"
+ #include "commands/cmd_whowas.h"
++#include <cstdio>
+ 
+ static unsigned long already_sent[MAX_DESCRIPTORS] = {0};
+ 
+diff -urNad inspircd-1.1.22+dfsg~/src/xline.cpp inspircd-1.1.22+dfsg/src/xline.cpp
+--- inspircd-1.1.22+dfsg~/src/xline.cpp	2008-02-11 08:22:46.000000000 -0500
++++ inspircd-1.1.22+dfsg/src/xline.cpp	2009-06-21 17:39:21.000000000 -0400
+@@ -16,6 +16,7 @@
+ #include "modules.h"
+ #include "wildcard.h"
+ #include "xline.h"
++#include <cstdio>
+ 
+ /* Version two, now with optimized expiry!
+  *
