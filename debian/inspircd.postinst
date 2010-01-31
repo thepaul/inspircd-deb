@@ -7,6 +7,8 @@ case "$1" in
 	configure)
 		chown -R irc:irc /etc/inspircd
 		chmod 770 /etc/inspircd
+        mkdir -p /var/run/inspircd
+        chown irc:irc /var/run/inspircd
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

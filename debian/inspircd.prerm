@@ -22,6 +22,7 @@ case "$1" in
     if test -f /var/run/inspircd.pid; then
         invoke-rc.d inspircd stop
     fi
+    rmdir /var/run/inspircd || true
     ;;
     failed-upgrade)
     ;;
