@@ -1,3 +1,10 @@
+inspircd (1.2.2+paul-3) unstable; urgency=low
+
+  * Really get gnutls module to be built. Required an end run around
+    a broken configure script.
+
+ -- paul cannon <paul@thepaul.xen.prgmr.com>  Sun, 31 Jan 2010 01:23:04 -0700
+
 inspircd (1.2.2+paul-2) unstable; urgency=low
 
   * Use gnutls
