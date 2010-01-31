@@ -1,3 +1,2 @@
-02_fix_gnutls_config.dpatch
 03_use_pkg-config_gnutls.dpatch
 04_gcc44_fixes.dpatch 
