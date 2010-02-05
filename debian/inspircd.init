@@ -13,7 +13,7 @@
 # GPL Licensed
 
 IRCD="/usr/sbin/inspircd"
-IRCDPID="/var/run/inspircd.pid"
+IRCDPID="/var/run/inspircd/inspircd.pid"
 IRCDLOG="/var/log/inspircd.log"
 IRCDARGS="--logfile $IRCDLOG"
 USER="irc"
